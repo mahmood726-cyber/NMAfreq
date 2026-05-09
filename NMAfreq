@@ -288,9 +288,9 @@ networkServer <- function(id, data) {
     output$networkPlot <- renderVisNetwork({
       net <- networkData()
       if (is.null(net) || nrow(net$nodes) == 0) {
-        dummyNodes <- data.frame(id = "No data", label = "No data", title = "No data", stringsAsFactors = FALSE)
-        dummyEdges <- data.frame(from = character(0), to = character(0), stringsAsFactors = FALSE)
-        return(visNetwork(dummyNodes, dummyEdges, height = "500px", width = "100%"))
+        emptyNodes <- data.frame(id = "No data", label = "No data", title = "No data", stringsAsFactors = FALSE)
+        emptyEdges <- data.frame(from = character(0), to = character(0), stringsAsFactors = FALSE)
+        return(visNetwork(emptyNodes, emptyEdges, height = "500px", width = "100%"))
       }
       visNetwork(net$nodes, net$edges, height = "500px", width = "100%") %>% 
         visNodes(shape = "dot", size = 20) %>% 
